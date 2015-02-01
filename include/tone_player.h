@@ -28,11 +28,9 @@ extern "C"
 {
 #endif
 
-#define TONE_PLAYER_ERROR_CLASS          TIZEN_ERROR_MULTIMEDIA_CLASS | 0x60
-
 /**
  * @file tone_player.h
- * @brief This file contains the tone player API
+ * @brief This file contains the tone player API.
  */
 
 /**
@@ -41,7 +39,8 @@ extern "C"
  */
 
 /**
- * @brief Enumerations of error codes for wav player
+ * @brief Enumeration of error codes for wav player.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -51,7 +50,8 @@ typedef enum
 } tone_player_error_e;
 
 /**
- * @brief Enumerations of tone
+ * @brief Enumeration of tone.
+ * @since_tizen 2.3
  */
 typedef enum
 {
@@ -74,17 +74,17 @@ typedef enum
 	TONE_TYPE_DTMF_D,				/**< Predefined DTMF D (D) */
 	TONE_TYPE_SUP_DIAL,     /**< Call supervisory tone, Dial tone: CEPT: 425Hz, continuous */
 	TONE_TYPE_ANSI_DIAL,    /**< Call supervisory tone, Dial tone: ANSI (IS-95): 350Hz+440Hz, continuous */
-	TONE_TYPE_JAPAN_DIAL,    /**< Call supervisory tone, Dial tone: JAPAN: 400Hz, continuous*/
+	TONE_TYPE_JAPAN_DIAL,    /**< Call supervisory tone, Dial tone: JAPAN: 400Hz, continuous */
 	TONE_TYPE_SUP_BUSY,    /**< Call supervisory tone, Busy: CEPT: 425Hz, 500ms ON, 500ms OFF... */
 	TONE_TYPE_ANSI_BUSY,     /**< Call supervisory tone, Busy: ANSI (IS-95): 480Hz+620Hz, 500ms ON, 500ms OFF... */
-	TONE_TYPE_JAPAN_BUSY,     /**< Call supervisory tone, Busy: JAPAN: 400Hz, 500ms ON, 500ms OFF...*/
+	TONE_TYPE_JAPAN_BUSY,     /**< Call supervisory tone, Busy: JAPAN: 400Hz, 500ms ON, 500ms OFF... */
 	TONE_TYPE_SUP_CONGESTION,   /**< Call supervisory tone, Congestion: CEPT, JAPAN: 425Hz, 200ms ON, 200ms OFF */
 	TONE_TYPE_ANSI_CONGESTION,  /**< Call supervisory tone, Congestion: ANSI (IS-95): 480Hz+620Hz, 250ms ON, 250ms OFF... */
 	TONE_TYPE_SUP_RADIO_ACK,   /**< Call supervisory tone, Radio path acknowledgment : CEPT, ANSI: 425Hz, 200ms ON  */
 	TONE_TYPE_JAPAN_RADIO_ACK,  /**< Call supervisory tone, Radio path acknowledgment : JAPAN: 400Hz, 1s ON, 2s OFF...*/
 	TONE_TYPE_SUP_RADIO_NOTAVAIL,  /**< Call supervisory tone, Radio path not available: 425Hz, 200ms ON, 200 OFF 3 bursts */
 	TONE_TYPE_SUP_ERROR,    /**< Call supervisory tone, Error/Special info: 950Hz+1400Hz+1800Hz, 330ms ON, 1s OFF... */
-	TONE_TYPE_SUP_CALL_WAITING,  /**< Call supervisory tone, Call Waiting: CEPT, JAPAN: 425Hz, 200ms ON, 600ms OFF, 200ms ON, 3s OFF...  */
+	TONE_TYPE_SUP_CALL_WAITING,  /**< Call supervisory tone, Call Waiting: CEPT, JAPAN: 425Hz, 200ms ON, 600ms OFF, 200ms ON, 3s OFF... */
 	TONE_TYPE_ANSI_CALL_WAITING,  /**< Call supervisory tone, Call Waiting: ANSI (IS-95): 440 Hz, 300 ms ON, 9.7 s OFF, (100 ms ON, 100 ms OFF, 100 ms ON, 9.7s OFF ...) */
 	TONE_TYPE_SUP_RINGTONE,   /**< Call supervisory tone, Ring Tone: CEPT, JAPAN: 425Hz, 1s ON, 4s OFF... */
 	TONE_TYPE_ANSI_RINGTONE,   /**< Call supervisory tone, Ring Tone: ANSI (IS-95): 440Hz + 480Hz, 2s ON, 4s OFF... */
@@ -97,10 +97,10 @@ typedef enum
 	TONE_TYPE_SUP_INTERCEPT_ABBREV,    /**< Call supervisory tone (IS-95), abbreviated intercept: intercept tone limited to 4 seconds */
 	TONE_TYPE_SUP_CONGESTION_ABBREV,     /**< Call supervisory tone (IS-95), abbreviated congestion: congestion tone limited to 4 seconds */
 	TONE_TYPE_SUP_CONFIRM,       /**< Call supervisory tone (IS-95), confirm tone: a 350 Hz tone added to a 440 Hz tone repeated 3 times in a 100 ms on, 100 ms off cycle */
-	TONE_TYPE_SUP_PIP,        /**< Call supervisory tone (IS-95), pip tone: four bursts of 480 Hz tone (0.1 s on, 0.1 s off). */
+	TONE_TYPE_SUP_PIP,        /**< Call supervisory tone (IS-95), pip tone: four bursts of a 480 Hz tone (0.1 s on, 0.1 s off) */
 	TONE_TYPE_CDMA_DIAL_TONE_LITE,     /**< 425Hz continuous */
-	TONE_TYPE_CDMA_NETWORK_USA_RINGBACK,   /**< CDMA USA Ringback: 440Hz+480Hz 2s ON, 4000 OFF ...*/
-	TONE_TYPE_CDMA_INTERCEPT,      /**< CDMA Intercept tone: 440Hz 250ms ON, 620Hz 250ms ON ...*/
+	TONE_TYPE_CDMA_NETWORK_USA_RINGBACK,   /**< CDMA USA Ringback: 440Hz+480Hz 2s ON, 4000 OFF ... */
+	TONE_TYPE_CDMA_INTERCEPT,      /**< CDMA Intercept tone: 440Hz 250ms ON, 620Hz 250ms ON ... */
 	TONE_TYPE_CDMA_ABBR_INTERCEPT,     /**< CDMA Abbr Intercept tone: 440Hz 250ms ON, 620Hz 250ms ON */
 	TONE_TYPE_CDMA_REORDER,       /**< CDMA Reorder tone: 480Hz+620Hz 250ms ON, 250ms OFF... */
 	TONE_TYPE_CDMA_ABBR_REORDER,     /**< CDMA Abbr Reorder tone: 480Hz+620Hz 250ms ON, 250ms OFF repeated for 8 times */
@@ -110,7 +110,7 @@ typedef enum
 	TONE_TYPE_CDMA_NETWORK_CALLWAITING,    /**< CDMA Network Callwaiting tone: 440Hz 300ms ON */
 	TONE_TYPE_CDMA_PIP,        /**< CDMA PIP tone: 480Hz 100ms ON, 100ms OFF repeated for 4 times */
 	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_NORMAL,   /**< ISDN Call Signal Normal tone: {2091Hz 32ms ON, 2556 64ms ON} 20 times, 2091 32ms ON, 2556 48ms ON, 4s OFF */
-	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_INTERGROUP,  /**< ISDN Call Signal Intergroup tone: {2091Hz 32ms ON, 2556 64ms ON} 8 times, 2091Hz 32ms ON, 400ms OFF, {2091Hz 32ms ON, 2556Hz 64ms ON} 8times, 2091Hz 32ms ON, 4s OFF.*/
+	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_INTERGROUP,  /**< ISDN Call Signal Intergroup tone: {2091Hz 32ms ON, 2556 64ms ON} 8 times, 2091Hz 32ms ON, 400ms OFF, {2091Hz 32ms ON, 2556Hz 64ms ON} 8times, 2091Hz 32ms ON, 4s OFF */
 	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_SP_PRI,   /**< ISDN Call Signal SP PRI tone:{2091Hz 32ms ON, 2556 64ms ON} 4 times 2091Hz 16ms ON, 200ms OFF, {2091Hz 32ms ON, 2556Hz 64ms ON} 4 times, 2091Hz 16ms ON, 200ms OFF */
 	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_PAT3,   /**< SDN Call sign PAT3 tone: silent tone */
 	TONE_TYPE_CDMA_CALL_SIGNAL_ISDN_PING_RING,  /**< ISDN Ping Ring tone: {2091Hz 32ms ON, 2556Hz 64ms ON} 5 times 2091Hz 20ms ON */
@@ -134,7 +134,7 @@ typedef enum
 	TONE_TYPE_CDMA_LOW_SLS,       /**< CDMA LOW SLS tone: {1300Hz 25ms, 1450Hz 25ms} 10 times, 500ms OFF, {1300Hz 25ms, 1450Hz 25ms} 20 times, 500ms OFF, {1300Hz 25ms, 1450Hz 25ms} 10 times, 3000ms OFF, REPEAT */
 	TONE_TYPE_CDMA_HIGH_S_X4,      /**< CDMA HIGH S X4 tone: {3700Hz 25ms, 4000Hz 25ms} 10 times, 500ms OFF, {3700Hz 25ms, 4000Hz 25ms} 10 times, 500ms OFF, {3700Hz 25ms, 4000Hz 25ms} 10 times, 500ms OFF, {3700Hz 25ms, 4000Hz 25ms} 10 times, 2500ms OFF, REPEAT.... */
 	TONE_TYPE_CDMA_MED_S_X4,       /**< CDMA MED S X4 tone: {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 2500ms OFF, REPEAT.... */
-	TONE_TYPE_CDMA_LOW_S_X4,       /**< CDMA LOW S X4 tone: {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 2500ms OFF, REPEAT....*/
+	TONE_TYPE_CDMA_LOW_S_X4,       /**< CDMA LOW S X4 tone: {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 500ms OFF, {2600Hz 25ms, 2900Hz 25ms} 10 times, 2500ms OFF, REPEAT.... */
 	TONE_TYPE_CDMA_HIGH_PBX_L,      /**< CDMA HIGH PBX L: {3700Hz 25ms, 4000Hz 25ms}20 times, 2000ms OFF, REPEAT.... */
 	TONE_TYPE_CDMA_MED_PBX_L,      /**< CDMA MED PBX L: {2600Hz 25ms, 2900Hz 25ms}20 times, 2000ms OFF, REPEAT.... */
 	TONE_TYPE_CDMA_LOW_PBX_L,      /**< CDMA LOW PBX L: {1300Hz 25ms,1450Hz 25ms}20 times, 2000ms OFF, REPEAT.... */
@@ -155,12 +155,12 @@ typedef enum
 	TONE_TYPE_CDMA_ONE_MIN_BEEP,      /**< CDMA One Min Beep tone: 1150Hz+770Hz 400ms ON */
 	TONE_TYPE_CDMA_KEYPAD_VOLUME_KEY_LITE,   /**< CDMA KEYPAD Volume key lite tone: 941Hz+1477Hz 120ms ON */
 	TONE_TYPE_CDMA_PRESSHOLDKEY_LITE,    /**< CDMA PRESSHOLDKEY LITE tone: 587Hz 375ms ON, 1175Hz 125ms ON */
-	TONE_TYPE_CDMA_ALERT_INCALL_LITE,     /**< CDMA ALERT INCALL LITE tone: 587Hz 62ms, 784 62ms, 831Hz 62ms, 784Hz 62ms, 1109 62ms, 784Hz 62ms, 831Hz 62ms, 784Hz 62ms*/
+	TONE_TYPE_CDMA_ALERT_INCALL_LITE,     /**< CDMA ALERT INCALL LITE tone: 587Hz 62ms, 784 62ms, 831Hz 62ms, 784Hz 62ms, 1109 62ms, 784Hz 62ms, 831Hz 62ms, 784Hz 62ms */
 	TONE_TYPE_CDMA_EMERGENCY_RINGBACK,    /**< CDMA EMERGENCY RINGBACK tone: {941Hz 125ms ON, 10ms OFF} 3times 4990ms OFF, REPEAT... */
 	TONE_TYPE_CDMA_ALERT_CALL_GUARD,    /**< CDMA ALERT CALL GUARD tone: {1319Hz 125ms ON, 125ms OFF} 3 times */
 	TONE_TYPE_CDMA_SOFT_ERROR_LITE,     /**< CDMA SOFT ERROR LITE tone: 1047Hz 125ms ON, 370Hz 125ms */
 	TONE_TYPE_CDMA_CALLDROP_LITE,     /**< CDMA CALLDROP LITE tone: 1480Hz 125ms, 1397Hz 125ms, 784Hz 125ms */
-	TONE_TYPE_CDMA_NETWORK_BUSY_ONE_SHOT,   /**< CDMA_NETWORK_BUSY_ONE_SHOT tone: 425Hz 500ms ON, 500ms OFF. */
+	TONE_TYPE_CDMA_NETWORK_BUSY_ONE_SHOT,   /**< CDMA_NETWORK_BUSY_ONE_SHOT tone: 425Hz 500ms ON, 500ms OFF */
 	TONE_TYPE_CDMA_ABBR_ALERT,      /**< CDMA_ABBR_ALERT tone: 1150Hz+770Hz 400ms ON */
 	TONE_TYPE_CDMA_SIGNAL_OFF,    /**< CDMA_SIGNAL_OFF - silent tone */
 	TONE_TYPE_USER_DEFINED_LOW_FRE,                    /**< User Defined Tone: 100Hz continuous */
@@ -182,32 +182,16 @@ typedef enum
 /**
  * @brief Plays a tone.
  *
- * @param[in] tone	The tone type to play
- * @param[in] type	The sound type
- * @param[in] duration_ms	The tone duration in milliseconds\n
- *		-1 indicates an infinite duration
- * @param[out] id	The tone player ID ( can be set to NULL )
- * @param[out] enable_session  set  enable/unable session
- *
- * @return 0 on success, otherwise a negative error value.
- * @retval #TONE_PLAYER_ERROR_NONE Successful
- * @retval #TONE_PLAYER_ERROR_INVALID_PARAMETER Invalid parameter
- * @retval #TONE_PLAYER_ERROR_INVALID_OPERATION Invalid operation
- *
- * @see tone_player_stop()
- */
-int tone_player_start_ex(tone_type_e tone, sound_type_e type, int duration, int *id, bool enable_session);
-
-/**
- * @brief Plays a tone.
+ * @since_tizen 2.3
  *
  * @param[in] tone	The tone type to play
  * @param[in] type	The sound type
- * @param[in] duration_ms	The tone duration in milliseconds\n
- *		-1 indicates an infinite duration
- * @param[out] id	The tone player ID ( can be set to NULL )
+ * @param[in] duration_ms	The tone duration in milliseconds \n
+ *		                    @c -1 indicates an infinite duration.
+ * @param[out] id	The tone player ID ( can be set to @c NULL )
  *
- * @return 0 on success, otherwise a negative error value.
+ * @return @c 0 on success, 
+ *         otherwise a negative error value
  * @retval #TONE_PLAYER_ERROR_NONE Successful
  * @retval #TONE_PLAYER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #TONE_PLAYER_ERROR_INVALID_OPERATION Invalid operation
@@ -219,9 +203,12 @@ int tone_player_start(tone_type_e tone, sound_type_e type, int duration_ms, int 
 /**
  * @brief Stops playing the tone.
  *
+ * @since_tizen 2.3
+ *
  * @param[in] id	The tone player ID to stop
  *
- * @return 0 on success, otherwise a negative error value.
+ * @return @c 0 on success, 
+ *         otherwise a negative error value
  * @retval #TONE_PLAYER_ERROR_NONE Successful
  * @retval #TONE_PLAYER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #TONE_PLAYER_ERROR_INVALID_OPERATION Invalid operation

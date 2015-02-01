@@ -15,13 +15,9 @@
 */
 
 
-#ifdef FEATURE_IS_WEARABLE
-#define LOG_TAG "CAPI_MEDIA_TONE_PLAYER"
-#endif
 
-#ifndef FEATURE_IS_WEARABLE
-#define LOG_TAG "TIZEN_N_TONE_PLAYER"
-#endif
+
+#define LOG_TAG "CAPI_MEDIA_TONE_PLAYER"
 
 #include <sound_manager.h>
 #include <tone_player.h>
@@ -58,9 +54,6 @@ static int __convert_tone_player_error_code(const char *func, int code){
 	return ret;
 }
 
-
-#ifdef FEATURE_IS_WEARABLE
-
 int tone_player_start_ex(tone_type_e tone, sound_type_e type, int duration, int *id, bool enable_session){
 	int ret;
 	int player;
@@ -81,26 +74,9 @@ int tone_player_start_ex(tone_type_e tone, sound_type_e type, int duration, int 
 }
 
 
-int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){	
+int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){
 	return tone_player_start_ex(tone, type, duration, id, true);
 }
-#endif
-
-#ifndef FEATURE_IS_WEARABLE
-
-int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){
-	int ret;
-	int player;
-	if( tone < TONE_TYPE_DEFAULT || tone > TONE_TYPE_CDMA_SIGNAL_OFF )
-		return __convert_tone_player_error_code(__func__, TONE_PLAYER_ERROR_INVALID_PARAMETER);
-			
-	ret = mm_sound_play_tone(tone, type , 1, duration, &player);
-
-	if( ret == 0 && id != NULL)
-		*id = player;		
-	return __convert_tone_player_error_code(__func__, ret);
-}
-#endif
 
 int tone_player_stop(int id){
 	return __convert_tone_player_error_code(__func__, mm_sound_stop_sound(id));
