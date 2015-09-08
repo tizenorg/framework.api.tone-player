@@ -17,7 +17,7 @@
 
 
 
-#define LOG_TAG "TIZEN_N_TONE_PLAYER"
+#define LOG_TAG "CAPI_MEDIA_TONE_PLAYER"
 
 #include <sound_manager.h>
 #include <tone_player.h>
@@ -40,7 +40,7 @@ static int __convert_tone_player_error_code(const char *func, int code){
 			errorstr = "ERROR_NONE";
 			break;
 		case TONE_PLAYER_ERROR_INVALID_PARAMETER:
-		case MM_ERROR_INVALID_ARGUMENT: 
+		case MM_ERROR_INVALID_ARGUMENT:
 		case MM_ERROR_SOUND_INVALID_POINTER:
 			ret = TONE_PLAYER_ERROR_INVALID_PARAMETER;
 			errorstr = "INVALID_PARAMETER";
@@ -49,23 +49,33 @@ static int __convert_tone_player_error_code(const char *func, int code){
 			ret = TONE_PLAYER_ERROR_INVALID_OPERATION;
 			errorstr = "INVALID_OPERATION";
 			break;
-	}	
+	}
 	LOGE( "[%s] %s(0x%08x) : core frameworks error code(0x%08x)",func, errorstr, ret, code);
 	return ret;
 }
 
-
-int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){
+int tone_player_start_ex(tone_type_e tone, sound_type_e type, int duration, int *id, bool enable_session){
 	int ret;
 	int player;
-	if( tone < TONE_TYPE_DEFAULT || tone > TONE_TYPE_CDMA_SIGNAL_OFF )
+	double vol = 1.0;
+
+	if( tone < TONE_TYPE_DEFAULT || tone > TONE_TYPE_USER_DEFINED_HIGH_FRE )
 		return __convert_tone_player_error_code(__func__, TONE_PLAYER_ERROR_INVALID_PARAMETER);
-	
-	ret = mm_sound_play_tone(tone, type , 1, duration, &player);
+
+	if( type == SOUND_TYPE_CALL )
+		vol = 0.2; // for ringback ton, minute reminders, video call, alert on call
+
+	ret = mm_sound_play_tone_ex(tone, type , vol, duration, &player, enable_session);
 
 	if( ret == 0 && id != NULL)
-		*id = player;		
+		*id = player;
+
 	return __convert_tone_player_error_code(__func__, ret);
+}
+
+
+int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){
+	return tone_player_start_ex(tone, type, duration, id, true);
 }
 
 int tone_player_stop(int id){

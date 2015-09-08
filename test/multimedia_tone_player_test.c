@@ -17,7 +17,6 @@
 
 
 #include <stdio.h>
-#include <tone_player.h>
 #include <glib.h>
 #include <unistd.h>
 #include <string.h>
@@ -37,7 +36,14 @@ void tone_play_test(){
 	int i ;
 	
 	for( i =0 ; i <= 106 ; i++){
-		printf("play %d sound\n", i);
+		printf("play %d sound(enable_session)\n", i);
+		tone_player_start(i, SOUND_TYPE_MEDIA ,500,NULL);
+		usleep(1000);
+
+	}
+
+	for( i =0 ; i <= 106 ; i++){
+		printf("play %d sound(unable_session)\n", i);
 		tone_player_start(i, SOUND_TYPE_MEDIA ,500,NULL);
 		usleep(1000);
 
