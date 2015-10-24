@@ -1,7 +1,7 @@
 #sbs-git:slp/api/tone-player capi-media-tone-player 0.1.0 b0f7320c6e26c5aab7708be00e7f20d018e39262
 Name:       capi-media-tone-player
 Summary:    A tone player library in SLP C API
-Version:    0.1.5
+Version:    0.1.11
 Release:    0
 Group:      libdevel
 License:    Apache-2.0

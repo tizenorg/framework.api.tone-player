@@ -44,7 +44,7 @@ extern "C"
  */
 typedef enum
 {
-    TONE_PLAYER_ERROR_NONE        = TIZEN_ERROR_NONE,                      /**< Successful */
+    TONE_PLAYER_ERROR_NONE              = TIZEN_ERROR_NONE,                    /**< Successful */
     TONE_PLAYER_ERROR_INVALID_PARAMETER = TIZEN_ERROR_INVALID_PARAMETER,       /**< Invalid parameter */
     TONE_PLAYER_ERROR_INVALID_OPERATION = TIZEN_ERROR_INVALID_OPERATION,       /**< Invalid operation */
 } tone_player_error_e;
@@ -183,14 +183,13 @@ typedef enum
  * @brief Plays a tone.
  *
  * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
- *
  * @param[in] tone	The tone type to play
  * @param[in] type	The sound type
  * @param[in] duration_ms	The tone duration in milliseconds \n
  *		                    @c -1 indicates an infinite duration.
  * @param[out] id	The tone player ID ( can be set to @c NULL )
  *
- * @return @c 0 on success, 
+ * @return @c 0 on success,
  *         otherwise a negative error value
  * @retval #TONE_PLAYER_ERROR_NONE Successful
  * @retval #TONE_PLAYER_ERROR_INVALID_PARAMETER Invalid parameter

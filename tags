@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+-dbg-package	debian/rules	/^	dh_strip --dbg-package=capi-media-tone-player-dbg$/;"	m
+-sourcedir	debian/rules	/^	dh_install --sourcedir=debian\/tmp$/;"	m
+CC	TC/testcase/Makefile	/^CC ?= gcc$/;"	m
+CFLAGS	TC/testcase/Makefile	/^CFLAGS = -I. `pkg-config --cflags $(PKGS)`$/;"	m
+CFLAGS	debian/rules	/^CFLAGS = -Wall -g$/;"	m
+CMAKE_BUILD_DIR	debian/rules	/^CMAKE_BUILD_DIR ?= $(CURDIR)\/cmake_build_tmp$/;"	m
+CMAKE_ROOT_DIR	debian/rules	/^CMAKE_ROOT_DIR ?= $(CURDIR)$/;"	m
+C_FILES	TC/testcase/Makefile	/^C_FILES = $(shell ls *.c)$/;"	m
+DLOG_D	src/tone_player.c	22;"	d	file:
+DLOG_I	src/tone_player.c	21;"	d	file:
+DLOG_V	src/tone_player.c	20;"	d	file:
+GmainThread	test/multimedia_tone_player_test.c	/^gpointer GmainThread(gpointer data){$/;"	f
+LDFLAGS	TC/testcase/Makefile	/^LDFLAGS = `pkg-config --libs $(PKGS)`$/;"	m
+LOG_TAG	src/tone_player.c	19;"	d	file:
+MY_ASSERT	TC/testcase/utc_tone_player.c	22;"	d	file:
+NEGATIVE_TC_IDX	TC/testcase/utc_tone_player.c	/^	NEGATIVE_TC_IDX,$/;"	e	enum:__anon1	file:
+PKGS	TC/testcase/Makefile	/^PKGS = capi-media-tone-player dlog glib-2.0$/;"	m
+POSITIVE_TC_IDX	TC/testcase/utc_tone_player.c	/^	POSITIVE_TC_IDX = 0x01,$/;"	e	enum:__anon1	file:
+TCS	TC/testcase/Makefile	/^TCS := $(shell ls -1 *.c | cut -d. -f1)$/;"	m
+TONE_PLAYER_ERROR_CLASS	include/tone_player.h	30;"	d
+TONE_PLAYER_ERROR_INVALID_OPERATION	include/tone_player.h	/^    TONE_PLAYER_ERROR_INVALID_OPERATION = TIZEN_ERROR_INVALID_OPERATION,       \/**< Invalid operation *\/$/;"	e	enum:__anon2
+TONE_PLAYER_ERROR_INVALID_PARAMETER	include/tone_player.h	/^    TONE_PLAYER_ERROR_INVALID_PARAMETER = TIZEN_ERROR_INVALID_PARAMETER,       \/**< Invalid parameter *\/$/;"	e	enum:__anon2
+TONE_PLAYER_ERROR_NONE	include/tone_player.h	/^    TONE_PLAYER_ERROR_NONE        = TIZEN_ERROR_OK,                      \/**< Successful *\/$/;"	e	enum:__anon2
+TONE_TYPE_DEFAULT	include/tone_player.h	/^	TONE_TYPE_DEFAULT = 0,			\/**< The default tone *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_0	include/tone_player.h	/^	TONE_TYPE_DTMF_0 = 0,				\/**< Predefined DTMF 0 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_1	include/tone_player.h	/^	TONE_TYPE_DTMF_1, 				\/**< Predefined DTMF 1 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_2	include/tone_player.h	/^	TONE_TYPE_DTMF_2,				\/**< Predefined DTMF 2 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_3	include/tone_player.h	/^	TONE_TYPE_DTMF_3,				\/**< Predefined DTMF 3 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_4	include/tone_player.h	/^	TONE_TYPE_DTMF_4,				\/**< Predefined DTMF 4 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_5	include/tone_player.h	/^	TONE_TYPE_DTMF_5,				\/**< Predefined DTMF 5 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_6	include/tone_player.h	/^	TONE_TYPE_DTMF_6,				\/**< Predefined DTMF 6 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_7	include/tone_player.h	/^	TONE_TYPE_DTMF_7,				\/**< Predefined DTMF 7 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_8	include/tone_player.h	/^	TONE_TYPE_DTMF_8,				\/**< Predefined DTMF 8 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_9	include/tone_player.h	/^	TONE_TYPE_DTMF_9,				\/**< Predefined DTMF 9 *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_A	include/tone_player.h	/^	TONE_TYPE_DTMF_A,				\/**< Predefined DTMF A (A) *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_B	include/tone_player.h	/^	TONE_TYPE_DTMF_B,				\/**< Predefined DTMF B (B) *\/	$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_C	include/tone_player.h	/^	TONE_TYPE_DTMF_C,				\/**< Predefined DTMF C (C) *\/	$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_D	include/tone_player.h	/^	TONE_TYPE_DTMF_D				\/**< Predefined DTMF D (D) *\/		$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_P	include/tone_player.h	/^	TONE_TYPE_DTMF_P,				\/**< Predefined DTMF sharP (#) *\/$/;"	e	enum:__anon3
+TONE_TYPE_DTMF_S	include/tone_player.h	/^	TONE_TYPE_DTMF_S,			   \/**< Predefined DTMF Star - Asterisk (*) *\/$/;"	e	enum:__anon3
+__TIZEN_MEDIA_TONE_PLAYER_H__	include/tone_player.h	20;"	d
+_convert_tone_player_error_code	src/tone_player.c	/^int _convert_tone_player_error_code(int code){$/;"	f
+cleanup	TC/testcase/utc_tone_player.c	/^static void cleanup(void)$/;"	f	file:
+event_thread	test/multimedia_tone_player_test.c	/^static GThread *event_thread;$/;"	v	file:
+g_mainloop	test/multimedia_tone_player_test.c	/^static GMainLoop *g_mainloop = NULL;$/;"	v	file:
+main	test/multimedia_tone_player_test.c	/^int main(int argc, char**argv)$/;"	f
+startup	TC/testcase/utc_tone_player.c	/^static void startup(void)$/;"	f	file:
+tet_cleanup	TC/testcase/utc_tone_player.c	/^void (*tet_cleanup)(void) = cleanup;$/;"	v
+tet_startup	TC/testcase/utc_tone_player.c	/^void (*tet_startup)(void) = startup;$/;"	v
+tet_testlist	TC/testcase/utc_tone_player.c	/^struct tet_testlist tet_testlist[] = {$/;"	v	typeref:struct:tet_testlist
+tone_play_test	test/multimedia_tone_player_test.c	/^void tone_play_test(){$/;"	f
+tone_player_error_e	include/tone_player.h	/^} tone_player_error_e;$/;"	t	typeref:enum:__anon2
+tone_player_start	src/tone_player.c	/^int tone_player_start(tone_type_e tone, sound_type_e type, int duration, int *id){$/;"	f
+tone_player_stop	src/tone_player.c	/^int tone_player_stop(int id){$/;"	f
+tone_type_e	include/tone_player.h	/^} tone_type_e;$/;"	t	typeref:enum:__anon3
+utc_tone_player_start_n	TC/testcase/utc_tone_player.c	/^static void utc_tone_player_start_n(void){$/;"	f	file:
+utc_tone_player_start_p	TC/testcase/utc_tone_player.c	/^static void utc_tone_player_start_p(void){$/;"	f	file:
+utc_tone_player_stop_n	TC/testcase/utc_tone_player.c	/^static void utc_tone_player_stop_n(void){$/;"	f	file:
+utc_tone_player_stop_p	TC/testcase/utc_tone_player.c	/^static void utc_tone_player_stop_p(void){$/;"	f	file:
